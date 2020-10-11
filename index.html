@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+
+<html lang="de">
+<head>
+	<meta charset="UTF-8" />
+	<title> LG | Vertretungsplan</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+
+</head>
+
+<body>
+	<header>
+		<div id="headerwrap">
+			<a href="https://leiningergymnasium.de/">
+				<img src="logo2.png" height="100%" alt="logo" />
+				<a href="https://leingym.de/"><img src="https://iserv.eu/user/themes/iserv/images/IServ_Logo.png" height="100%" alt="logo" />
+		</div>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="login.html">Login</a></li>
+		</ul>
+	</nav>
+
+
+	<table>
+		<tr>
+			<td>
+				<section id="section">
+
+					<div id="input1"><input type="text" id="myInput" onkeyup="myFunction()" placeholder=Suche...></div>
+			</td>
+			<td> &nbsp; &nbsp; &nbsp; &nbsp; </td>
+			<td>
+				Deine Klassenstufe
+				<select id="mylist" onchange="myFunction1()" class='form-control'>
+					<option> alle </option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+
+
+				</select>
+			</td>
+				</tr>
+	</table>
+
+
+
+
+
+	<script>
+		function sortTable(n) {
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("tabellemain");
+			switching = true;
+			// Set the sorting direction to ascending:
+			dir = "asc";
+			/* Make a loop that will continue until
+			no switching has been done: */
+			while (switching) {
+				// Start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/* Loop through all table rows (except the
+				first, which contains table headers): */
+				for (i = 1; i < (rows.length - 1); i++) {
+					// Start by saying there should be no switching:
+					shouldSwitch = false;
+					/* Get the two elements you want to compare,
+					one from current row and one from the next: */
+					x = rows[i].getElementsByTagName("TD")[n];
+					y = rows[i + 1].getElementsByTagName("TD")[n];
+					/* Check if the two rows should switch place,
+					based on the direction, asc or desc: */
+					if (dir == "asc") {
+						if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					} else if (dir == "desc") {
+						if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/* If a switch has been marked, make the switch
+					and mark that a switch has been done: */
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					// Each time a switch is done, increase this count by 1:
+					switchcount++;
+				} else {
+					/* If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again. */
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
+	</script>
+
+
+	<script>
+		function myFunction() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("tabellemain");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		} tabl
+	</script>
+
+	<table border="1" cellspacing="0" cellpadding="0"> <tbody>     <tr> <td>      <p> <b> <u> Liste der abwesenden Lehrer: </u> </b> </p>  </td></tr>   </tbody> </table>
+
+
+	<table>
+		<tbody>
+			<tr>
+				<td>
+
+					<table border="1" cellspacing="0" cellpadding="4">
+						<tbody id="tabellemain">
+							<tr>
+								<th id="cursor" onclick="sortTable(0)">			Klasse ↕ </th>
+								<th id="cursor" onclick="sortTable(1)">			Std. ↕ </th>
+								<th id="cursordefault">							reguläres Fach </th>
+								<th id="cursor" onclick="sortTable(3)">			Vertreter/in ↕ </th>
+								<th id="cursordefault"> 						geändertes Fach </th>
+								<th id="cursordefault">							Raum </th>
+								<th id="cursordefault">							Art </th>
+								<th id="cursordefault">							Info </th>
+								<th id="cursordefault">							(statt)</th>
+							</tr>
+
+
+
+							<tr><td>05AB</td><td>4</td><td>Eth</td><td>Chmielewski</td><td>Eth</td><td>A1.19</td><td>Raum-Vtr.</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>05B</td><td>5</td><td>M</td><td>Keller</td><td>D</td><td>B2.02</td><td>Tausch</td><td>&nbsp;</td><td>Fr-9.10. / 6</td></tr>
+							<tr><td>05CDE</td><td>1</td><td>Eth</td><td>Chmielewski</td><td>Eth</td><td>A1.19</td><td>Raum-Vtr.</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>05D</td><td>2</td><td>M</td><td>Dienes</td><td>&nbsp;</td><td>B2.03</td><td>Vertretung</td><td>Arbeitsauftrag</td><td>&nbsp;</td></tr>
+							<tr><td>05D</td><td>3</td><td>D</td><td>Bresser</td><td>E</td><td>B2.03</td><td>Vertretung</td><td>statt 6.</td><td>&nbsp;</td></tr>
+							<tr><td>05D</td><td>6</td><td>E</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>06B</td><td>6</td><td>Nw</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>06B</td><td>1</td><td>Ek</td><td>Ofner</td><td>SpK</td><td>Sph2</td><td>statt Ausfallstd.</td><td>Sportsachen!</td><td>&nbsp;</td></tr>
+							<tr><td>06B</td><td>3</td><td>E</td><td>Kaiser</td><td>E</td><td>A1.15</td><td>Vertretung</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>06C</td><td>5</td><td>E</td><td>Radloff</td><td>M</td><td>B1.05</td><td>Verlegung</td><td>&nbsp;</td><td>Do-8.10. / 6</td></tr>
+							<tr><td>06C</td><td>6</td><td>M</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>06E</td><td>6</td><td>Nw</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>07A</td><td>5</td><td>E</td><td>Chmielewski</td><td>E</td><td>A1.19</td><td>Raum-Vtr.</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>07A</td><td>6</td><td>D</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>08A</td><td>5</td><td>E</td><td>Schreiber</td><td>M</td><td>A3.06</td><td>Verlegung</td><td>&nbsp;</td><td>Do-8.10. / 6</td></tr>
+							<tr><td>08A</td><td>6</td><td>M</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>08B</td><td>3</td><td>M</td><td>Beppler</td><td>Bi</td><td>A3.07</td><td>Vertretung</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>08CD</td><td>3</td><td>F</td><td>Dienes</td><td>&nbsp;</td><td>A3.05</td><td>Vertretung</td><td>Arbeitsauftrag</td><td>&nbsp;</td></tr>
+							<tr><td>08C</td><td>6</td><td>Ek</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>08C</td><td>4</td><td>E</td><td>Strampe</td><td>Ch</td><td>A2.26</td><td>statt Ausfallstd.</td><td>statt 5.</td><td>&nbsp;</td></tr>
+							<tr><td>08C</td><td>5</td><td>Ch</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>08CD</td><td>3</td><td>L</td><td>Chmielewski</td><td>L</td><td>A1.19</td><td>Raum-Vtr.</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>08D</td><td>4</td><td>D</td><td>Fischer</td><td>E</td><td>A3.07</td><td>Vertretung</td><td>Englischsachen!</td><td>&nbsp;</td></tr>
+							<tr><td>09B</td><td>4</td><td>Ek</td><td>Weißenmayer</td><td>Ph</td><td>A3.17</td><td>Vertretung</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>09C</td><td>4</td><td>E</td><td>König</td><td>&nbsp;</td><td>A3.29</td><td>Vertretung</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>09D</td><td>6</td><td>M</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>10ABE</td><td>7 - 8</td><td>Nw</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>10BE</td><td>3 - 4</td><td>SpM</td><td>+</td><td>&nbsp;</td><td>A3.14</td><td>Vtr. ohne Lehrer</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>10C</td><td>4</td><td>F</td><td>+</td><td>&nbsp;</td><td>A2.14</td><td>Vtr. ohne Lehrer</td><td>Arbeitsauftrag</td><td>&nbsp;</td></tr>
+							<tr><td>10C</td><td>6</td><td>E</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>10D</td><td>1</td><td>Ek</td><td>+</td><td>&nbsp;</td><td>A2.15</td><td>Vtr. ohne Lehrer</td><td>Arbeitsauftrag</td><td>&nbsp;</td></tr>
+							<tr><td>10E</td><td>6</td><td>Sk</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>11</td><td>1 - 2</td><td>L1</td><td>+</td><td>&nbsp;</td><td>A2.07</td><td>Vtr. ohne Lehrer</td><td>Arbeitsauftrag</td><td>&nbsp;</td></tr>
+							<tr><td>11</td><td>1 - 2</td><td>F1</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>11</td><td>7</td><td>SK1</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>13</td><td>4</td><td>BI2</td><td>+</td><td>&nbsp;</td><td>A2.13</td><td>Vtr. ohne Lehrer</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>13</td><td>5</td><td>et2</td><td>+</td><td>&nbsp;</td><td>A2.23</td><td>Vtr. ohne Lehrer</td><td>Arbeitsauftrag</td><td>&nbsp;</td></tr>
+							<tr><td>13</td><td>6</td><td>et2</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>13</td><td>1 - 2</td><td>CH1</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr><td>13</td><td>1 - 2</td><td>D2</td><td>---</td><td>---</td><td>---</td><td>Entfall</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+							<tr>
+								<td>13</td>
+								<td>1 - 2</td>
+								<td>E1</td>
+								<td>---</td>
+								<td>---</td>
+								<td>---</td>
+								<td>Entfall</td>
+								<td>&nbsp;</td>
+								<td>
+									&nbsp; <p>uhawdhawodhw</p>
+									<p>uhawdhawodhw</p>
+									<p>uhawdhawodhw</p>
+									<p>uhawdhawodhw</p>
+									<p>uhawdhawodhw</p>
+								</td>
+							</tr>
+
+
+					</table>
+
+					<script>
+						function myFunction1() {
+							var input, filter, table, tr, td, i;
+							input = document.getElementById("mylist");
+							filter = input.value.toUpperCase();
+							table = document.getElementById("tabellemain");
+							tr = table.getElementsByTagName("tr");
+							for (i = 0; i < tr.length; i++) {
+								td = tr[i].getElementsByTagName("td")[0];
+								if (td) {
+									if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+										tr[i].style.display = "";
+									} else {
+										tr[i].style.display = "none";
+									}
+								}
+							}
+						}
+
+
+
+
+					</script>
+				<td valign=top id="aside">
+					<p> <font size="6"> <b> <u> Wichtiges: </u></b></p> </font>
+					<p>
+						<font size="4">
+							Das Leiningergymnasium hat einen neuen Vertretungsplan <br> dieser wurde von  erstellt  wir danken herzlichst
+					</p>
+
+
+
+					</font>
+				</td>
+
+			</tr>s
+		</tbody>
+	</table>
+
+	</section>
+
+
+
+
+
+	<footer id="footer">
+		<p id="footerp">COPYRIGHT© 2020 <a href="https://www.instagram.com/leon_fassx/"> Leon Faßnacht </a> & <a href="https://www.instagram.com/alex_c_04/"> Alexander Cuntz </a>. Alle Rechte Vorbehalten.</p>
+		<br />
+		<p>
+			Diese Website verwendet Cookies.
+			Durch die Anmeldung erklären Sie ihr Einverständnis mit der Verwendung von Cookies.
+			Die Cookies enthalten keine personenbezogenen Daten und sind für die Verwendung des Online-Vertretungsplans notwendig.
+		</p>
+	</footer>
+
+
+</body>
+</html>
+
